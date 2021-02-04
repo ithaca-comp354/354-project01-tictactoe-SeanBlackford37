@@ -17,11 +17,15 @@ public class AdvancedAI implements TicTacToePlayer{
         Pair<Integer,Integer> wMVert = winningMoveVert(curBoard);
         Pair<Integer,Integer> bVert = blockingMoveVert(curBoard);
         Pair<Integer,Integer> bDiaL = blockingMoveDiaL(curBoard);
+        Pair<Integer,Integer> wMDia = winningMoveDia(curBoard);
         Pair<Integer,Integer> check = new Pair<>(-1,-1);
-        if(! wMVert.equals(check)){
+        
+        if(!wMDia.equals(check)){
+            return wMDia;
+        }
+        else if(!wMVert.equals(check)){
             return  wMVert;
         }
-        
         else if(!wMHorz.equals(check)){
             return wMHorz;
         }
@@ -70,7 +74,7 @@ public class AdvancedAI implements TicTacToePlayer{
                 }
                
                 if(count == 2){
-                    System.out.println("Winner");
+                    System.out.println("Winner Horz");
                     return new Pair<>(emptyI,emptyJ);
                 }
                 //System.out.println("row: " + i + " count:"  + count);    
@@ -93,12 +97,12 @@ public class AdvancedAI implements TicTacToePlayer{
                     if(curBoard.isSquareOpen(new Pair<>(j, i))){
                         emptyI = j;
                         emptyJ = i;
+                        
                     }
                     if(boardChars[j][i] == 'X'){
                         count++;
                     }
                     if(count == 2){
-                        System.out.println("Blocked");
                         return new Pair<>(emptyI,emptyJ);
                     }
                       
@@ -126,7 +130,8 @@ public class AdvancedAI implements TicTacToePlayer{
                     }
                        
                     if(count == 2){
-                        System.out.println("Winner");
+                        System.out.println("Winner Vert");
+                        System.out.println(emptyI + " "  + emptyJ);
                         return new Pair<>(emptyI,emptyJ);
                     }
                     //System.out.println("row: " + i + " count:"  + count);    
@@ -154,7 +159,7 @@ public class AdvancedAI implements TicTacToePlayer{
                             count++;
                     }
                     if(count == 2){
-                        System.out.println("Blocked");
+                        System.out.println("Blocked Vert");
                         return new Pair<>(emptyI,emptyJ);
                     }
                           
@@ -174,13 +179,13 @@ public class AdvancedAI implements TicTacToePlayer{
             if(curBoard.isSquareOpen(new Pair<>(i, i))){
                 emptyI = i;
             }   
-            System.out.println(boardChars[i][i]);
+            
 
             if(boardChars[i][i] == 'X'){
                 count++;
             }
             if(count == 2){
-                System.out.println("Blocked");
+                //System.out.println("Blocked Dia");
                 return new Pair<>(emptyI,emptyI);
             }
             
@@ -192,20 +197,56 @@ public class AdvancedAI implements TicTacToePlayer{
             if(curBoard.isSquareOpen(new Pair<>(i, i))){
                 emptyITwo = i;
             }   
-            System.out.println(boardChars[i][i]);
+            
 
             if(boardChars[i][num] == 'X'){
                 num--;
                 countTwo++;
             }
-            if(count == 2){
-                System.out.println("Blocked");
+            if(countTwo == 2){
+                //System.out.println("Blocked Dia");
                 return new Pair<>(emptyITwo,emptyITwo);
+            }
+        }
+        return new Pair<>(-1,-1);
+    }
+    private Pair<Integer, Integer> winningMoveDia(TicTacToeBoard curBoard){
+    
+        char[][] boardChars = curBoard.getSquare();
+        int count = 0;
+        int emptyI = -1;
+        for(int i = 0; i < boardChars.length;i++){
+            
+            
+
+            if(curBoard.isSquareOpen(new Pair<>(i, i))){
+                emptyI = i;
+            }   
+            if(boardChars[i][i] == 'O'){
+                count++;
+            }
+            if(count == 2){
+                //System.out.println("Winner Dia");
+                return new Pair<>(emptyI,emptyI);
             }
             
         }
-        
-        
+        int countTwo = 0;
+        int emptyITwo = -1;
+        int num = 2;
+        for(int i = 0; i < boardChars.length;i++){
+            if(curBoard.isSquareOpen(new Pair<>(i, i))){
+                emptyITwo = i;
+            }
+            if(boardChars[i][num] == 'O'){
+                num--;
+                countTwo++;
+            }
+            if(countTwo == 2){
+                //System.out.println("Winner Dia");
+                return new Pair<>(emptyITwo,emptyITwo);
+            }
+        }
         return new Pair<>(-1,-1);
     }
 }
