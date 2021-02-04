@@ -16,7 +16,8 @@ public class TwoDArrayBoard implements TicTacToeBoard{
             
         }
     }
-
+    
+    
     public TwoDArrayBoard(String squaresString){
         if (!isValidSquaresString(squaresString)){
             throw new IllegalArgumentException("Bad squareString:" + squaresString);
@@ -93,6 +94,10 @@ public class TwoDArrayBoard implements TicTacToeBoard{
             } 
         }
         return boardStr;
+    }
+    @Override
+    public char[][] getSquare(){
+        return squares;
     }
 
     @Override
