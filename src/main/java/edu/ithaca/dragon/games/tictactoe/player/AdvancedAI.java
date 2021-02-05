@@ -74,7 +74,7 @@ public class AdvancedAI implements TicTacToePlayer{
                 }
                
                 if(count == 2){
-                    System.out.println("Winner Horz");
+                    //System.out.println("Winner Horz");
                     return new Pair<>(emptyI,emptyJ);
                 }
                 //System.out.println("row: " + i + " count:"  + count);    
@@ -130,8 +130,8 @@ public class AdvancedAI implements TicTacToePlayer{
                     }
                        
                     if(count == 2){
-                        System.out.println("Winner Vert");
-                        System.out.println(emptyI + " "  + emptyJ);
+                        //System.out.println("Winner Vert");
+                        
                         return new Pair<>(emptyI,emptyJ);
                     }
                     //System.out.println("row: " + i + " count:"  + count);    
@@ -159,7 +159,7 @@ public class AdvancedAI implements TicTacToePlayer{
                             count++;
                     }
                     if(count == 2){
-                        System.out.println("Blocked Vert");
+                        //System.out.println("Blocked Vert");
                         return new Pair<>(emptyI,emptyJ);
                     }
                           
