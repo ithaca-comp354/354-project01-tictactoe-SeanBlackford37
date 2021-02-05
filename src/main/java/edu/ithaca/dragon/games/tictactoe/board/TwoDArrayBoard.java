@@ -95,10 +95,7 @@ public class TwoDArrayBoard implements TicTacToeBoard{
         }
         return boardStr;
     }
-    @Override
-    public char[][] getSquare(){
-        return squares;
-    }
+    
 
     @Override
     public String displayString(){
