@@ -4,8 +4,8 @@ import org.javatuples.Pair;
 
 import edu.ithaca.dragon.games.tictactoe.board.TicTacToeBoard;
 
-
-public class AdvancedAI implements TicTacToePlayer{
+public class RuleBasedAgentBlackford implements TicTacToePlayer {
+    
     private int[][] preferredMoves = {
         {1, 1}, {0, 0}, {0, 2}, {2, 0}, {2, 2},
         {0, 1}, {1, 0}, {1, 2}, {2, 1}};

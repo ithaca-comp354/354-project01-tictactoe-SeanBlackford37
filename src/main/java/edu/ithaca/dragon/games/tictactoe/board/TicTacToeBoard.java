@@ -11,7 +11,9 @@ public interface TicTacToeBoard {
     //@returns true if any player can choose this square, false otherwise
     public boolean isSquareOpen(Pair<Integer, Integer> square);
     //@returns true if the given symbol (X or O) has currently won on this board
-    public boolean checkForWin(char symbol);    
+    public boolean checkForWin(char symbol);   
+     //@returns the char found at the given square
+     public char checkSquare(Pair<Integer, Integer> square);
     
     //@throws IllegalArgumentException if square is taken or symbol is invalid
     //@post places the given symbol in the given sqaure, if both are valid
@@ -24,5 +26,7 @@ public interface TicTacToeBoard {
     
     //@returns a copy of the current board
     public TicTacToeBoard copyBoard();
+
+   
     
 }
