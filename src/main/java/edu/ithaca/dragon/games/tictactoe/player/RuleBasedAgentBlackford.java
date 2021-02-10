@@ -56,7 +56,7 @@ public class RuleBasedAgentBlackford implements TicTacToePlayer {
             return blockVert;
         }
         
-       for(int x = 0; x< 8; x++){
+       for(int x = 0; x < 9; x++){
            for(int y = 0; y < 1; y++){
                 if(curBoard.isSquareOpen(new Pair<>(preferredMoves[x][y], preferredMoves[x][y+1]))){
                     return new Pair<>(preferredMoves[x][y], preferredMoves[x][y+1]);
